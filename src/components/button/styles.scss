@@ -1,0 +1,32 @@
+@import '../../scss/variables.scss';
+@import '../../scss/effects.scss';
+
+.btn {
+  @include fade-colors;
+  border: none;
+  border-radius: $default-border-radius;
+  background-color: $primary-button-color;
+  cursor: pointer;
+  padding: 10px;
+  color: #fff;
+  width: 100%;
+
+  &.btn-primary {
+    background-color: $primary-button-color;
+
+    &:hover,
+    &:active {
+      background-color: $primary-button-color-hover;
+    }
+  }
+
+  &.btn-secondary {
+    color: $primary-font-color;
+    background-color: $secondary-button-color;
+
+    &:hover,
+    &:active {
+      background-color: $secondary-button-color-hover;
+    }
+  }
+}
