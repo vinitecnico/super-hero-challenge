@@ -1,2 +1,5 @@
 export { default as Header } from './header'
 export { default as Content } from './content'
+export { default as Loading } from './loading'
+export { default as Hero } from './hero'
+export { default as Breadcrumbs } from './breadcrumbs'

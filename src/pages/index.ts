@@ -1,4 +1,2 @@
-
-import Home from './home'
-
-export { Home }
+export { default as Home } from './home'
+export { default as HeroList } from './hero-list'
