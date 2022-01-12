@@ -1,0 +1,51 @@
+@import '../../scss/variables.scss';
+
+.hero-detail {
+    padding: 32px;
+    background-color: $main-background-color;
+
+    .hero-detail-images{
+        display: flex;
+        justify-content: left;
+        align-items: left;
+
+        img.image {
+            max-width: 680px;
+            position: relative;
+            height: auto;
+        }
+    }
+
+    .hero-detail-presentation{
+
+
+        .hero-detail-presentation-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+
+        .hero-detail-presentation-subtitle {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        dt {
+            margin-bottom: 5px;
+        }
+    }
+}
+
+
+@media (max-width: 800px) {
+    .hero-detail {
+        .hero-detail-images{
+            img.image {
+                width: auto;
+                max-height:300px;
+            }
+        }
+    }
+}

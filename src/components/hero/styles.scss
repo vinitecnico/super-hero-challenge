@@ -9,6 +9,8 @@
   &:hover {
     background-color: $background-color;
     border: 1px solid $primary-font-color;
+    opacity: 0.7;
+    transition: 0.3s;
   }
 
   &:first-of-type {

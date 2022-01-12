@@ -1,33 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import { Breadcrumbs, Content, Loading, Hero } from '../../components'
 import { getByName } from '../../clients'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Result } from '../../types'
 
 const HeroList: React.FC = () => {
   const [loading, setLoading] = useState(true)
   const [heros, setHeros] = useState<Result[] | null>([])
   const { heroName } = useParams()
-  console.log('here >>>', heroName)
+  const navigate = useNavigate()
 
-  const getHero = async () => {
+  const getHeros = async () => {
     if (heroName) {
       var response = await getByName(heroName)
       const {
         data: { results },
       } = response
       setHeros(results)
-      console.log('here 2<<<', results)
     }
 
     setLoading(false)
   }
 
-  const handleSelectHero = (id: string) => console.log('here >>>')
+  const handleSelectHero = (id: string) => {
+    navigate(`/hero-details/${id}`)
+  }
+  
   const handleCompareHero = (id: string) => console.log('here >>>')
 
   useEffect(() => {
-    getHero()
+    getHeros()
   }, [heroName])
 
   return (
@@ -35,7 +37,7 @@ const HeroList: React.FC = () => {
       {loading && <Loading />}
       {!loading && heros && (
         <>
-          <Breadcrumbs crumbs={[heroName || '']} />
+          <Breadcrumbs crumbs={['home', heroName || '']} />
           {heros?.map((hero) => (
             <Hero
               key={hero.id}

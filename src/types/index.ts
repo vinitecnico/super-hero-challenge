@@ -76,3 +76,9 @@ export interface ISuperHeroGetByName {
   'results-for': string;
   results: Result[];
 }
+
+export interface IHeroDetailProps {
+  hero: Result
+}
+
+export type heroPowerstats = 'combat' | 'durability' | 'intelligence' | 'power' | 'speed' | 'strength'

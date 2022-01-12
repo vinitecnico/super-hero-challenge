@@ -1,5 +1,5 @@
 import React from 'react'
-import SearchField from '../searchField'
+import SearchField from '../search-field'
 import './styles.scss'
 
 const Header = () => {

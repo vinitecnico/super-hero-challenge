@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Header } from "../components";
-import { Home, HeroList } from "../pages";
+import { Home, HeroList, HeroDetails } from "../pages";
 
 const RouteCustom: React.FC  = () => {
   return (
@@ -10,6 +10,7 @@ const RouteCustom: React.FC  = () => {
       <Routes>
         <Route path="/" caseSensitive={false} element={<Home />} />
         <Route path="/hero-list/:heroName" caseSensitive={false} element={<HeroList />} />
+        <Route path="/hero-details/:id" caseSensitive={false} element={<HeroDetails />} />
       </Routes>
     </Router>
   );
