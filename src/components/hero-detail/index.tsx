@@ -1,16 +1,9 @@
 import React from 'react'
-import { heroPowerstats, IHeroDetailProps } from '../../types'
+import { Powerstats } from '..'
+import { IHeroDetailProps } from '../../types'
 import './styles.scss'
 
 const HeroDetail: React.FC<IHeroDetailProps> = ({ hero }) => {
-  const _heroPowerstats: heroPowerstats[] = [
-    'combat',
-    'durability',
-    'intelligence',
-    'power',
-    'speed',
-    'strength',
-  ]
   return (
     <section>
       <article className="hero-detail">
@@ -22,15 +15,7 @@ const HeroDetail: React.FC<IHeroDetailProps> = ({ hero }) => {
             <h1 className="hero-detail-presentation-title">{hero.name}</h1>
             <h2 className="hero-detail-presentation-subtitle">{hero.biography['full-name']}</h2>
             <h3>powerstats</h3>
-            <dl>
-              {_heroPowerstats?.map((value) => {
-                return (
-                  <dt key={value}>
-                    <b>{value}</b>: {hero?.powerstats[value]}
-                  </dt>
-                )
-              })}
-            </dl>
+            <Powerstats item={hero?.powerstats} />
             <h3>detalhes</h3>
             <dl>
               <dt>
@@ -61,7 +46,10 @@ const HeroDetail: React.FC<IHeroDetailProps> = ({ hero }) => {
                 <b>editora</b>: {hero?.biography['publisher']}
               </dt>
               <dt>
-                <b>profissão</b>: {hero?.work['occupation']} <b>base</b> {hero?.work['base']}
+                <b>profissão</b>: {hero?.work['occupation']}
+              </dt>
+              <dt>
+                <b>base</b> {hero?.work['base']}
               </dt>
             </dl>
           </section>

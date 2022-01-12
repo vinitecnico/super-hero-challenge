@@ -83,3 +83,12 @@ export interface IHeroDetailProps {
 }
 
 export type heroPowerstats = 'combat' | 'durability' | 'intelligence' | 'power' | 'speed' | 'strength'
+
+export interface IPowerstatsProps {
+  item: Powerstats;
+}
+
+export interface ICardComparerProps {
+  hero: Result
+  handleRemoveHero: (id: string) => void
+}
