@@ -15,10 +15,10 @@ const HeroDetail: React.FC<IHeroDetailProps> = ({ hero }) => {
     <section>
       <article className="hero-detail">
         <section className="row">
-          <section className="hero-detail-images col-md-6 col-12">
+          <section className="hero-detail-images col-sm-6 col-md-6 col-12">
             <img className="image" src={hero?.image?.url} alt={hero.name} />
           </section>
-          <section className="hero-detail-presentation col-md-6 col-12">
+          <section className="hero-detail-presentation col-sm-6 col-md-6 col-12">
             <h1 className="hero-detail-presentation-title">{hero.name}</h1>
             <h2 className="hero-detail-presentation-subtitle">{hero.biography['full-name']}</h2>
             <h3>powerstats</h3>
