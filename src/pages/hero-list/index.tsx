@@ -39,14 +39,15 @@ const HeroList: React.FC = () => {
   const handleCompareHero = (id: string) => {
     const data = compares ? compares : []
     const response = heros?.find((hero) => hero.id === id)
-    if (response) data.push(response)
+    if (response && !compares?.find((item) => item.id === id)) {
+      data.push(response)
+    }
     setCompares([...data])
   }
 
   useEffect(() => {
     getHeros()
   }, [heroName])
-
 
   const handleRemoveHero = (id: string) => {
     const data = compares?.filter((compare) => compare.id !== id) || []
@@ -62,9 +63,13 @@ const HeroList: React.FC = () => {
           {!hasError ? (
             <>
               {compares && compares?.length > 0 && (
-                <section className="row card-list">
+                <section className="card-list row">
                   {compares?.map((compare) => (
-                    <CardComparer key={compare.id} hero={compare} handleRemoveHero={handleRemoveHero} />
+                    <CardComparer
+                      key={compare.id}
+                      hero={compare}
+                      handleRemoveHero={handleRemoveHero}
+                    />
                   ))}
                 </section>
               )}
