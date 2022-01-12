@@ -25,7 +25,7 @@ const SearchField: React.FC = () => {
     <section className="search-field">
       <input
         className="search-field-input"
-        placeholder="Nunca deixe de buscar"
+        placeholder="encontre seu personagem favorito"
         type="text"
         value={search}
         // onKeyUp={handleKeyUp}
