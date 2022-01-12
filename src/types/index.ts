@@ -75,6 +75,7 @@ export interface ISuperHeroGetByName {
   response: string;
   'results-for': string;
   results: Result[];
+  error?: string | null;
 }
 
 export interface IHeroDetailProps {

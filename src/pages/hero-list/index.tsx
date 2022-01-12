@@ -7,25 +7,33 @@ import { Result } from '../../types'
 const HeroList: React.FC = () => {
   const [loading, setLoading] = useState(true)
   const [heros, setHeros] = useState<Result[] | null>([])
+  const [hasError, setHasError] = useState(false)
   const { heroName } = useParams()
   const navigate = useNavigate()
 
   const getHeros = async () => {
-    if (heroName) {
-      var response = await getByName(heroName)
-      const {
-        data: { results },
-      } = response
-      setHeros(results)
-    }
+    try {
+      setHasError(false)
+      if (heroName) {
+        var response = await getByName(heroName)
+        const {
+          data: { results, error },
+        } = response
 
-    setLoading(false)
+        if (error) throw error
+        setHeros(results)
+      }
+    } catch {
+      setHasError(true)
+    } finally {
+      setLoading(false)
+    }
   }
 
   const handleSelectHero = (id: string) => {
     navigate(`/hero-details/${id}`)
   }
-  
+
   const handleCompareHero = (id: string) => console.log('here >>>')
 
   useEffect(() => {
@@ -35,20 +43,26 @@ const HeroList: React.FC = () => {
   return (
     <Content noBgColor={false}>
       {loading && <Loading />}
-      {!loading && heros && (
+      {!loading && (
         <>
           <Breadcrumbs crumbs={['home', heroName || '']} />
-          {heros?.map((hero) => (
-            <Hero
-              key={hero.id}
-              id={hero.id}
-              picture={hero?.image?.url}
-              name={hero.name}
-              fullName={hero?.biography['full-name']}
-              handleSelectHero={handleSelectHero}
-              handleCompareHero={handleCompareHero}
-            />
-          ))}
+          {!hasError ? (
+            <>
+              {heros?.map((hero) => (
+                <Hero
+                  key={hero.id}
+                  id={hero.id}
+                  picture={hero?.image?.url}
+                  name={hero.name}
+                  fullName={hero?.biography['full-name']}
+                  handleSelectHero={handleSelectHero}
+                  handleCompareHero={handleCompareHero}
+                />
+              ))}
+            </>
+          ) : (
+            <h3>personagem não encontrado ;(</h3>
+          )}
         </>
       )}
     </Content>

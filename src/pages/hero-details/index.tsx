@@ -16,7 +16,6 @@ const HeroDetails: React.FC = () => {
   const getHeros = async () => {
     if (id) {
       var response = await getByHeroId(id)
-      console.log(response.data)
       setHero(response?.data)
     }
 
